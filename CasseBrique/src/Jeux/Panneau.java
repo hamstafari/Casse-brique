@@ -3,11 +3,9 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
-
-
-public class Brique extends JPanel{
-	
-	public Brique(Graphics g) {
+ 
+public class Panneau extends JPanel {
+  public void paintComponent(Graphics g){
 		int resistance = 0;
 		g.drawRect(10, 10, 10, 50);
 		int aleatoire =(int) (Math.random() * 3 );
@@ -22,5 +20,5 @@ public class Brique extends JPanel{
 			g.setColor(Color.blue);
 			resistance = 3;
 		}
-	}
+  }               
 }
