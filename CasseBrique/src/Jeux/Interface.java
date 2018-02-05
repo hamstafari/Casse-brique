@@ -29,23 +29,27 @@ public class Interface extends JFrame {
 		go();
 	}
 
-	private void go() {
+	public void go() {
 		int x = pan.getPosX(), y = pan.getPosY();
 		boolean backX = false;
 		boolean backY = false;
 
 		while (true) {
 			// Si la coordonnée x est inférieure à 1, on avance
-			if (x < 1)
+			if (x < 0)
 				backX = false;
 			// Si la coordonnée x est supérieure à la taille du Panneau moins la taille du rond, on recule
-			if (x > pan.getWidth() - 50)
+			if (x > pan.getWidth())
 				backX = true;
 			// Idem pour l'axe y
 			if (y < 1)
 				backY = false;
-			if (y > pan.getHeight() - 50)
+			if (y > pan.getHeight())
 				backY = true;
+			
+			//A Revoir
+			if (y == pan.getHeight()-25 && (x > Panneau.PosSourisX() || x < Panneau.PosSourisX()-25))
+				backX = true;
 
 		    // Si on avance, on incrémente la coordonnée
 		    // backX est un booléen, donc !backX revient à écrire
@@ -70,21 +74,4 @@ public class Interface extends JFrame {
 		    }
 	  }
    }
-
-  public Interface(){    
-	//Récupère taille de l'écran
-	Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-	int height = (int)dimension.getHeight();
-	int width = (int)dimension.getWidth();
-    this.setTitle("Ma première fenêtre Java");
-    this.setSize(width, height-50);
-    this.setLocationRelativeTo(null);               
-    this.setSize(width, height-50);
-    this.setLocationRelativeTo(null);         
-    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    this.setBackground(Color.black);
-    this.setContentPane(new Panneau());
-    this.setResizable(false);
-    this.setVisible(true);
-  }
 }

@@ -1,8 +1,12 @@
 package Jeux;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import java.awt.PointerInfo;
 
 import javax.swing.JPanel;
+
  
 public class Panneau extends JPanel {
 	private int posX = -50;
@@ -17,6 +21,8 @@ public class Panneau extends JPanel {
         g.setColor(Color.black);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
         
+        
+        //A changer pour stocker
 		int resistance = 0;
         for (int d = this.getHeight()/10; d < this.getHeight()/5*3; d += 50) {
         	for (int t = this.getWidth()/20; t < this.getWidth()/20*19; t += 50) {
@@ -39,24 +45,22 @@ public class Panneau extends JPanel {
 				g.fillRect(t, d, 35, 10);
         	}
         }
-				joueur1(g,this.PosSourisX());
-	}  
+      //Cercle rouge
+        g.setColor(Color.red);
+        g.fillOval(posX, posY, 13, 13);
+		joueur1(g,this.PosSourisX());
+      }
 	
-	public int PosSourisX() {
+	
+	
+	
+	static int PosSourisX() {
 		PointerInfo a = MouseInfo.getPointerInfo();
 		Point b = a.getLocation();
 		int x = (int) b.getX();
+		System.out.println(x);
 		return x;
 	}
-	
-	//Tssdf
-	/*public void mousePressed(MouseEvent e,Graphics g) {
-        int x = e.getX();
-        int y = e.getY();
-        g.fillRect(x, y, 50, 70);
-        g.drawRect(x, y, 50, 70);
-        repaint();
-    }*/
 	
 	public void joueur1(Graphics g,int x) {
 		g.setColor(Color.white);
@@ -64,10 +68,7 @@ public class Panneau extends JPanel {
 		g.drawRect(x,this.getHeight()-25,90,7);
 	}
         
-        //Cercle rouge
-        g.setColor(Color.red);
-        g.fillOval(posX, posY, 13, 13);
-      }
+        
 
       public int getPosX() {
         return posX;
