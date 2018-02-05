@@ -52,7 +52,7 @@ public class Panneau extends JPanel {
 		return x;
 	}
 	
-	
+	//Tssdf
 	/*public void mousePressed(MouseEvent e,Graphics g) {
         int x = e.getX();
         int y = e.getY();
