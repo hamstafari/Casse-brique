@@ -1,4 +1,4 @@
-
+package Jeux;
 
 public class Main{
 
@@ -6,11 +6,6 @@ public class Main{
 		// TODO Auto-generated method stub
 		
 		Interface fen1 =new Interface();
-		
-	}
-	
-	public void machin() {
-		
 	}
 
 }
