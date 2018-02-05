@@ -5,5 +5,9 @@ public class Main {
 		// TODO Auto-generated method stub
 		//nouveau
 	}
+	
+	public int machin() {
+		
+	}
 
 }
