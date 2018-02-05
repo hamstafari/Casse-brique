@@ -39,6 +39,31 @@ public class Panneau extends JPanel {
 				g.fillRect(t, d, 35, 10);
         	}
         }
+				joueur1(g,this.PosSourisX());
+	}  
+	
+	public int PosSourisX() {
+		PointerInfo a = MouseInfo.getPointerInfo();
+		Point b = a.getLocation();
+		int x = (int) b.getX();
+		return x;
+	}
+	
+	//Tssdf
+	/*public void mousePressed(MouseEvent e,Graphics g) {
+        int x = e.getX();
+        int y = e.getY();
+        g.fillRect(x, y, 50, 70);
+        g.drawRect(x, y, 50, 70);
+        repaint();
+    }*/
+	
+	public void joueur1(Graphics g,int x) {
+		g.setColor(Color.white);
+		g.fillRect(x,this.getHeight()-25,90,7);
+		g.drawRect(x,this.getHeight()-25,90,7);
+	}
+        
         //Cercle rouge
         g.setColor(Color.red);
         g.fillOval(posX, posY, 13, 13);
