@@ -41,7 +41,7 @@ public class Interface extends JFrame {
 				backY = false;
 			if (y > pan.getHeight())
 				backY = true;
-			
+			//lll
 			//A Revoir
 			if (y == pan.getHeight()-25 && (x > Panneau.posSourisX() || x < Panneau.posSourisX()-25))
 				backX = true;
