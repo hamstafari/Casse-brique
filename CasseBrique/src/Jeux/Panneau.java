@@ -4,7 +4,6 @@ import java.awt.Graphics;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.PointerInfo;
-
 import javax.swing.JPanel;
 
  
@@ -54,18 +53,19 @@ public class Panneau extends JPanel {
 	
 	
 	
-	static int PosSourisX() {
+	public int PosSourisX() {
 		PointerInfo a = MouseInfo.getPointerInfo();
 		Point b = a.getLocation();
 		int x = (int) b.getX();
-		System.out.println(x);
 		return x;
 	}
 	
 	public void joueur1(Graphics g,int x) {
 		g.setColor(Color.white);
-		g.fillRect(x,this.getHeight()-25,90,7);
-		g.drawRect(x,this.getHeight()-25,90,7);
+		if (PosSourisX() < this.getWidth() - 90)
+			g.fillRect(x,this.getHeight()-25,90,7);
+		else
+			g.fillRect(this.getWidth()-90, this.getHeight() - 25, 90, 7);
 	}
         
         
