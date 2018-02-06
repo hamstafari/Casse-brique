@@ -1,18 +1,13 @@
 package Jeux;
 import java.awt.Dimension;
 
-import java.awt.Color;
-import java.awt.Dimension;
-
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 
 public class Interface extends JFrame {
-	
+	boolean test;
 
 	private Panneau pan = new Panneau();
-
 	
 	public Interface(){
 		Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -48,7 +43,7 @@ public class Interface extends JFrame {
 				backY = true;
 			
 			//A Revoir
-			if (y == pan.getHeight()-25 && (x > Panneau.PosSourisX() || x < Panneau.PosSourisX()-25))
+			if (y == pan.getHeight()-25 && (x > Panneau.posSourisX() || x < Panneau.posSourisX()-25))
 				backX = true;
 
 		    // Si on avance, on incrémente la coordonnée
@@ -65,7 +60,7 @@ public class Interface extends JFrame {
 		    else
 		        pan.setPosY(--y);
 		    // On redessine notre Panneau
-		    pan.repaint();
+		    	pan.repaint();
 		    // Comme on dit : la pause s'impose ! Ici, trois millièmes de seconde
 		    try {
 		    	Thread.sleep(3);
