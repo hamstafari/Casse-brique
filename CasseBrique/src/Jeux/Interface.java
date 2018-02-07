@@ -10,6 +10,11 @@ public class Interface extends JFrame {
 	private Panneau pan = new Panneau();
 	
 	public Interface(){
+        configureWindow();
+        go();
+    }
+
+    private void configureWindow() {
 		Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		int height = (int)dimension.getHeight();
 		int width = (int)dimension.getWidth();
@@ -19,6 +24,7 @@ public class Interface extends JFrame {
 		this.setSize(width, height-50);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
+		//Lis la touche echap pour fermer l'appli
 		KeyAdapter listener = new KeyAdapter() {
             @Override 
             public void keyPressed(KeyEvent e) {
@@ -31,23 +37,26 @@ public class Interface extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setContentPane(pan);
 		this.setVisible(true);
-		go();
-	}
+        
+    }
 
 	public void go() {
-		int x = pan.getPosX(), y = pan.getPosY();
-		boolean backX = true;
-		boolean backY = true;
-		
-		if (pan.PosSourisX() < this.getWidth() - 90)
-			x = pan.PosSourisX()+45;
+		int x = pan.getPosX(), y = pan.getPosY();		
+		if (pan.posSourisX() < this.getWidth() - 90)
+			x = pan.posSourisX()+45;
 		else
 			x = this.getWidth()-45;
 		pan.setPosX(x);
 		y = pan.getHeight()-38;
 		pan.setPosY(y);
-
+		boolean backX = false;
+		boolean backY = false;
+		
 		while (true) {
+			
+			Brick brique = new Brick(35, 10);
+			brique.drawBrick(null);
+			
 			// Si la coordonnée x est inférieure à 1, on avance
 			if (x < 0)
 				backX = false;
@@ -57,19 +66,19 @@ public class Interface extends JFrame {
 			// Idem pour l'axe y
 			if (y < 1)
 				backY = false;
-			if ( (y > pan.getHeight()-38 && y < pan.getHeight()-13) && (x == pan.PosSourisX()-7)) {
+			if ( (y > pan.getHeight()-38 && y < pan.getHeight()-13) && (x == pan.posSourisX()-7)) {
 				backX = true;
 				backY = true;
 			}
-			if ( (y > pan.getHeight()-38 && y < pan.getHeight()-13) && (x == pan.PosSourisX()+90)) {
+			if ( (y > pan.getHeight()-38 && y < pan.getHeight()-13) && (x == pan.posSourisX()+90)) {
 				backX = false;
 				backY = true;
 			}
-			if (y == pan.getHeight()-38 && (x > pan.PosSourisX()-10 && x < pan.PosSourisX()+90))
+			if (y == pan.getHeight()-38 && (x > pan.posSourisX()-10 && x < pan.posSourisX()+90))
 				backY = true;
 			if (y > pan.getHeight()+10) {
-				if (pan.PosSourisX() < this.getWidth() - 90)
-					x = pan.PosSourisX()+45;
+				if (pan.posSourisX() < this.getWidth() - 90)
+					x = pan.posSourisX()+45;
 				else
 					x = this.getWidth()-45;
 				pan.setPosX(x);

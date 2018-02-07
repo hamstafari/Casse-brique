@@ -61,55 +61,14 @@ public class Brick extends Panneau {
     	g=getGraphics();
     	
     	ArrayList al = new ArrayList();
-    	 for (int ligne = this.getHeight()/10; ligne < this.getHeight()/5*3; ligne += 50) {
-	        	for (int colonne = this.getWidth()/20; colonne < this.getWidth()/20*19; colonne += 50) {
-	        		Brick br = new Brick(35,10);
-	        		br.setCouleurEtRes();
-	        		al.add(br);
-	        		g.fillRect(colonne, ligne, br.getHauteur(), br.getLongueur());
-	        		g.setColor(br.getCouleur());
-    	
-    	
+    	for (int ligne = this.getHeight()/10; ligne < this.getHeight()/5*3; ligne += 50) {
+    		for (int colonne = this.getWidth()/20; colonne < this.getWidth()/20*19; colonne += 50) {
+    			Brick br = new Brick(35,10);
+	        	br.setCouleurEtRes();
+	        	al.add(br);
+	        	g.fillRect(colonne, ligne, br.getHauteur(), br.getLongueur());
+	        	g.setColor(br.getCouleur());
+	        }
+    	}
     }
-    	 }
-    }
-
 }
-
-
-/*public class Brick extends Panneau {
-
-	public void paintBrick(Graphics g){
-
-	int resistance;
-		for (int d = getHeight()/10; d < this.getHeight()/5*3; d += 50) {
-			for (int t = this.getWidth()/20; t < this.getWidth()/20*19; t += 50) {
-				
-				int aleatoire =(int) (Math.random() * 4 );
-				
-				switch(aleatoire) {
-				default:
-					g.setColor(Color.red);
-					resistance = 1;
-					break;
-				case 2:
-					g.setColor(Color.green.darker());
-					resistance = 2;
-					break;
-				case 3:
-					g.setColor(Color.blue);
-					resistance = 3;
-					break;
-				}
-		g.fillRect(t, d, 35, 10);
-		
-	}
-			
-}
-		
-		
-}
-	
-	
-	
-}*/

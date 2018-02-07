@@ -4,44 +4,26 @@ import java.awt.Graphics;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.PointerInfo;
-import java.util.ArrayList;
-
 import javax.swing.JPanel;
-
  
 public class Panneau extends JPanel {
 	private int posX = -50;
 	private int posY = -50;
 	
-	public void Initialisation() {
-		paintComponent(null);
-	}
-	
 	public void paintComponent(Graphics g){
 		//Fond noir
         g.setColor(Color.black);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
-        ArrayList al = new ArrayList();
-int resistance = 0;
-        for (int d = this.getHeight()/10; d < this.getHeight()/5*3; d += 50) {
-        	for (int t = this.getWidth()/20; t < this.getWidth()/20*19; t += 50) {
-        		
-        		
-        		Brick br = new Brick(35,10);
-        		br.setCouleur(Color.red);
-        		
-        		al.add(br);
-        	}
-        	}
-        }
+
       //Cercle rouge
         g.setColor(Color.red);
         g.fillOval(posX, posY, 13, 13);
 		joueur1(g,this.posSourisX());
       }
-	
+
 	
 	public int posSourisX() {
+
 		PointerInfo a = MouseInfo.getPointerInfo();
 		Point b = a.getLocation();
 		int x = (int) b.getX();
@@ -50,13 +32,8 @@ int resistance = 0;
 	
 	public void joueur1(Graphics g,int x) {
 		g.setColor(Color.white);
-		if (PosSourisX() < this.getWidth() - 90)
-			g.fillRect(x,this.getHeight()-25,90,7);
-		else
-			g.fillRect(this.getWidth()-90, this.getHeight() - 25, 90, 7);
+		g.fillRect(x,this.getHeight()-25,90,7);
 	}
-        
-        
 
       public int getPosX() {
         return posX;
