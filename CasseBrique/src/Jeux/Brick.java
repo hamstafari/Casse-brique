@@ -2,8 +2,9 @@ package Jeux;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
-public class Brick {
+public class Brick extends Panneau {
 
     private final int hauteur;
     private final int longueur;
@@ -20,31 +21,31 @@ public class Brick {
         return couleur;
     }
     
-    public final void setCouleur(Color couleur) {
+    public final void setCouleurEtRes() {
+    	
+    	 Color couleurbr=getCouleur();
     	
     	int aleatoire =(int) (Math.random() * 4 );
     	
 		switch(aleatoire) {
 		default:
 			this.couleur = Color.red;
+			this.resistance=1;
 			break;
 		case 2:
 			this.couleur = Color.green.darker();
+			this.resistance=2;
 			break;
 		case 3:
 			this.couleur = Color.blue;
+			this.resistance=3;
 			break;
 		}
-    	
-        this.couleur = couleur;
+        couleurbr = couleur;
     }
 
     public final int getResistance() {
         return resistance;
-    }
-
-    public final void setResistance(int resistance) {
-        this.resistance = resistance;
     }
 
     public final int getHauteur() {
@@ -53,6 +54,24 @@ public class Brick {
 
     public final int getLongueur() {
         return longueur;
+    }
+    
+    public void drawBrick(Graphics g) {
+    	
+    	g=getGraphics();
+    	
+    	ArrayList al = new ArrayList();
+    	 for (int ligne = this.getHeight()/10; ligne < this.getHeight()/5*3; ligne += 50) {
+	        	for (int colonne = this.getWidth()/20; colonne < this.getWidth()/20*19; colonne += 50) {
+	        		Brick br = new Brick(35,10);
+	        		br.setCouleurEtRes();
+	        		al.add(br);
+	        		g.fillRect(colonne, ligne, br.getHauteur(), br.getLongueur());
+	        		g.setColor(br.getCouleur());
+    	
+    	
+    }
+    	 }
     }
 
 }

@@ -10,26 +10,32 @@ public class Interface extends JFrame {
 	private Panneau pan = new Panneau();
 	
 	public Interface(){
-		Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-		int height = (int)dimension.getHeight();
-		int width = (int)dimension.getWidth();
-		this.setTitle("Ma première fenêtre Java");
-		this.setSize(width, height-50);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setResizable(false);
-		this.setLocationRelativeTo(null);
-		this.setContentPane(pan);
-		this.setVisible(true);
+        configureWindow();
+        
+        go();
+    }
 
-		go();
-	}
+    private void configureWindow() {
+        Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        int height = (int)dimension.getHeight();
+        int width = (int)dimension.getWidth();
+        this.setTitle("Ma première fenêtre Java");
+        this.setSize(width, height-50);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        this.setContentPane(pan);
+        this.setVisible(true);
+        
+    }
 
 	public void go() {
 		int x = pan.getPosX(), y = pan.getPosY();
 		boolean backX = false;
 		boolean backY = false;
-
+		
 		while (true) {
+			
 			// Si la coordonnée x est inférieure à 1, on avance
 			if (x < 0)
 				backX = false;
