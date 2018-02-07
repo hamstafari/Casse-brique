@@ -38,11 +38,10 @@ public class Panneau extends JPanel {
       }
 	
 	
-	public static int posSourisX() {
+	public int posSourisX() {
 		PointerInfo a = MouseInfo.getPointerInfo();
 		Point b = a.getLocation();
 		int x = (int) b.getX();
-		System.out.println(x);
 		return x;
 	}
 	
