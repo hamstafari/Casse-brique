@@ -1,74 +1,121 @@
 package Jeux;
 
 import java.awt.Color;
-import java.awt.Graphics;
-import java.util.ArrayList;
+import java.util.Random;
 
-public class Brick extends Panneau {
+/**
+ * The Class which defined Brick.
+ */
+/**
+ * @author Ham
+ *
+ */
+public class Brick {
 
-    private final int hauteur;
-    private final int longueur;
-    private Color couleur;
-    private int resistance;
+	/** The hauteur member for height. */
+	private final int hauteur;
 
-    public Brick(int hauteur, int longueur) {
-        super();
-        this.hauteur = hauteur;
-        this.longueur = longueur;
-    }
+	/** The longueur member for long. */
+	private final int longueur;
 
-    public final Color getCouleur() {
-        return couleur;
-    }
-    
-    public final void setCouleurEtRes() {
-    	
-    	 Color couleurbr=getCouleur();
-    	
-    	int aleatoire =(int) (Math.random() * 4 );
-    	
-		switch(aleatoire) {
+	/** The parameters for brick. */
+	private final BrickParam params;
+
+	/**
+	 * Instantiates a new brick.
+	 *
+	 * @param hauteur
+	 *            the height as {@link Integer}
+	 * @param longueur
+	 *            the long as {@link Integer}
+	 */
+	public Brick(int hauteur, int longueur) {
+		super();
+		this.hauteur = hauteur;
+		this.longueur = longueur;
+		params = new BrickParam();
+	}
+
+	/**
+	 * Sets the default parameters for color and strength.
+	 */
+	public final void setCouleurEtRes() {
+
+		final Random randGen = new Random();
+		final int aleatoire = randGen.nextInt(5);
+
+		switch (aleatoire) {
+
+		case 0:
+		case 1:
 		default:
-			this.couleur = Color.red;
-			this.resistance=1;
+			params.setCouleur(Color.red);
+			params.setResistance(1);
 			break;
 		case 2:
-			this.couleur = Color.green.darker();
-			this.resistance=2;
+			params.setCouleur(Color.green.darker());
+			params.setResistance(2);
 			break;
 		case 3:
-			this.couleur = Color.blue;
-			this.resistance=3;
+			params.setCouleur(Color.blue);
+			params.setResistance(3);
 			break;
 		}
-        couleurbr = couleur;
-    }
+	}
 
-    public final int getResistance() {
-        return resistance;
-    }
+	/**
+	 * Gets the resistance.
+	 *
+	 * @return the resistance as {@link Integer}
+	 */
+	public final int getResistance() {
+		int res = 0;
+		if (params != null) {
+			res = params.getResistance();
+		}
+		return res;
 
-    public final int getHauteur() {
-        return hauteur;
-    }
+	}
 
-    public final int getLongueur() {
-        return longueur;
-    }
-    
-    public void drawBrick(Graphics g) {
-    	
-    	g=getGraphics();
-    	
-    	ArrayList al = new ArrayList();
-    	for (int ligne = this.getHeight()/10; ligne < this.getHeight()/5*3; ligne += 50) {
-    		for (int colonne = this.getWidth()/20; colonne < this.getWidth()/20*19; colonne += 50) {
-    			Brick br = new Brick(35,10);
-	        	br.setCouleurEtRes();
-	        	al.add(br);
-	        	g.fillRect(colonne, ligne, br.getHauteur(), br.getLongueur());
-	        	g.setColor(br.getCouleur());
-	        }
-    	}
-    }
+	/**
+	 * Gets the color.
+	 *
+	 * @return the color as {@link Color}
+	 */
+	public final Color getColor() {
+		Color col = Color.BLACK;
+		if (params != null) {
+			col = params.getCouleur();
+		}
+		return col;
+
+	}
+
+	/**
+	 * Gets the height.
+	 *
+	 * @return the height as {@link Integer}
+	 */
+	public final int getHauteur() {
+		return hauteur;
+	}
+
+	/**
+	 * Gets the long.
+	 *
+	 * @return the long as {@link Integer}
+	 */
+	public final int getLongueur() {
+		return longueur;
+	}
+
+	/**
+	 * Gets the parameters of the brick (color and strength).
+	 *
+	 * @return the params as {@link BrickParam}
+	 */
+	public final BrickParam getParams() {
+		return params;
+	}
+
 }
